@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy1bf03oh60cc"]
+
+[ext_resource type="Script" path="res://navigation/character_body_2d.gd" id="1_tj73h"]
+[ext_resource type="PackedScene" uid="uid://cygoe66ib184k" path="res://navigation/player.tscn" id="2_765uk"]
+[ext_resource type="Texture2D" uid="uid://xqc72p3lvg76" path="res://icon.svg" id="2_gjb8h"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_n5cby"]
+vertices = PackedVector2Array(92.3516, 52, 17.8203, 23.7891, -108.547, -27.4375, 184.492, -112.727, 176.938, 41.9375, 576.023, 330.391, 528.508, 345.297, 327.453, 387.469, 184.461, 312.617, 145.609, 235.758, 375.719, 180.25, 718.672, 146.977, 23.2734, 52.8906, 703.727, -15.5625, 285.539, 53.5313)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10, 11), PackedInt32Array(0, 12, 1), PackedInt32Array(4, 3, 13, 14), PackedInt32Array(10, 14, 13, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(9, 31, 15, 63, 93, 62, 177, 52, 280, 63, 359, 174, 131, 229, 177, 320, 326, 398, 531, 355, 582, 339, 729, 150, 713, -24, 184, -123, -139, -29)])
+
+[node name="teste" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(249, 189)
+navigation_polygon = SubResource("NavigationPolygon_n5cby")
+
+[node name="perseguidor" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(249, 189)
+script = ExtResource("1_tj73h")
+target = NodePath("../player")
+
+[node name="Sprite2D" type="Sprite2D" parent="perseguidor"]
+texture = ExtResource("2_gjb8h")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="perseguidor/Sprite2D"]
+debug_enabled = true
+
+[node name="player" parent="." instance=ExtResource("2_765uk")]
+position = Vector2(523, 445)

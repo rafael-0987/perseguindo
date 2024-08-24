@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cygoe66ib184k"]
+
+[ext_resource type="Texture2D" uid="uid://xqc72p3lvg76" path="res://icon.svg" id="1_45tse"]
+
+[node name="player" type="CharacterBody2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.576471, 1, 0, 1)
+texture = ExtResource("1_45tse")
